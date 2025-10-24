@@ -194,7 +194,21 @@ ALTER TABLE table_name ADD PRIMARY KEY (column_name);
 ALTER TABLE table_name ADD FOREIGN KEY (column_name) REFERENCES other_table(other_column);
 
 '''
-    33. 
+    33. How can you retrieve the unique values from a column?
+    Answer:
+'''
+SELECT DISTINCT column_name FROM table_name;
+
+'''
+    34. What is the difference between an INNER JOIN and LEFT JOIN?
+    Answer: An INNER JOIN returns rows when there is a match in both tables, while a LEFT JOIN returns all rows from
+    the left table and the matched rows from the right table. If theres no match , the result is NULL on the right side.
+'''
+
+'''
+    35. What is normalization and why is it important?
+    Answer: Normalization is a process of organizing a database to reduce redundancy and ensure data integrity. It divides 
+    larger 
 '''
 
 
