@@ -208,7 +208,133 @@ SELECT DISTINCT column_name FROM table_name;
 '''
     35. What is normalization and why is it important?
     Answer: Normalization is a process of organizing a database to reduce redundancy and ensure data integrity. It divides 
-    larger 
+    larger tables into smaller ones and establishes relationships between them using foreign keys.
 '''
+
+'''
+    36. Describe 1NF, 2NF and 3NF in database normalization.
+    Answer:
+    1 NF (first Normal Form): Each table has primary key, and all attributes are atomic (no repeating groups or arrays).
+    2 NF (second Normal Form): All non-key attributes are fully functionally dependent on primary key.
+    3 NF (third Normal Form): All attributes are functionally dependent only on the primary key. 
+'''
+
+'''
+    37. What is a subquery, and how is it different from a JOIN?
+    Answer: A subquery is query nested inside another query. A subquery can return data that will be used 
+    in the main query as a condition. A JOIN is used to combine rows from two or more tables based on a 
+    related column.
+'''
+
+'''
+    38. Write a query to find employees whose salary is above the average salary.
+    Answer:
+'''
+SELECT employee_name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+'''
+    39. What is a stored procedure in MySQL?
+    Answer: A stored procedure is a precompiled group of SQL statements stored in the database. It can be 
+    invoked as needed.
+'''
+
+'''
+    40. How can you handle errors in stored procedure?
+    Answer: In MySQL, you can use the DECLARE statement to define error handlers using CONTINUE or EXIT handlers.
+'''
+
+'''
+    41. How do you prevent SQL injection in your queries?
+    Answer: 1. Use parameterized queries or prepared statements, 
+    2. Avoid constructing queries with string concatenation using external input.
+    3. Always validate and sanitize user input.
+'''
+
+'''
+    42. What are TRIGGERS in MySQL?
+    Answer: Triggers are automatic actions that the database can perform when a specified change occurs 
+    (like INSERT, UPDATE, or DELETE operation).
+'''
+
+'''
+    43. Can you explain the difference between CHAR_LENGTH and LENGTH functions?
+    Answer: CHAR_LENGTH returns the number of characters in a string, while LENGTH returns the number of bytes.
+    For single-byte character sets, they return the same value.
+'''
+
+'''
+    44. What is the purpose of GROUP_CONCAT function in MySQL?
+    Answer: GROUP_CONCAT returns a concatenated strind of aggregated data values for each group of rows in the
+    result set.
+'''
+
+'''
+    45. Write a SQL query to concatenate all names from the employees table into a single string, separated 
+    by commas.
+    Answer: 
+'''
+SELECT GROUP_CONCAT(employee_name) FROM employees;
+
+'''
+    46. How can you create index in MySQL?
+'''
+CREATE INDEX index_name ON table_name(column_name);
+
+'''
+    47. What is the difference between a clustered and a non-clustered index?
+    Answer: A clustered index determines the physical order of data in a table. A table can have only one
+    clustered index. Non-clustered indexes, on the other hand, do not determine the physical order and a table
+    can have multiple non-clustred indexes. 
+'''
+
+'''
+    48. What are views in MySQL? and why are they important?
+    Answer: A view is a virtual table based on the result set of an SQL statement. They allow encapsulating 
+    complex queries, providing a simplified representation or hiding certain data.
+'''
+
+'''
+    49. What are transactions in MySQL?
+    Answer: Transactions are a sequence of one or more SQL operations executed as a single unit. They ensure
+    data integrity, following the ACID properties (Atomicity, Consistency, Isolation Durability).
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
