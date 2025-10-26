@@ -301,40 +301,120 @@ CREATE INDEX index_name ON table_name(column_name);
     data integrity, following the ACID properties (Atomicity, Consistency, Isolation Durability).
 '''
 
+'''
+    50. How do you start and commit a transaction in MySQL?
+    Answer: 
+'''
+START TRANSACTION;
+-- sql operations
+COMMIT;
 
+'''
+    51. What is the difference betweem UNION and UNION ALL?
+    Answer: UNION returns unique records from combined dataset, while UNION ALL returns
+    all records, including duplicates.
+'''
 
+'''
+    52. What are the advantages of using stored procedure?
+    Answer: They provide better performance as they are precompiled, help in modular 
+    programming, offer a security mechanism, and reduce network traffic.
+'''
 
+'''
+    53. What is the difference between DATEDIFF and TIMESTAMPDIFF in MySQL?
+    Answer: Both are used to find the difference between two dates, but TIMESTAMPDIFF
+    allows for a more specific interval, like month or year, while DATED returns the 
+    difference in days.
+'''
 
+'''
+    54. How do you clone a TABLE in MySQL?
+    Answer: 
+'''
+CREATE TABLE new_table AS SELECT * FROM existing_table;
 
+'''
+    55. Write a SQL query to rank employees based on their salary in descending order?
+    Answer:
+'''
+SELECT employee_name, salary, RANK() OVER(ORDER BY salary DESC) AS ranking
+FROM employees;
 
+'''
+    56. How do you remove duplicate rows in a table?
+    Answer: One common way is to create a new table with distinct rows and delete the
+    original table:
+'''
+CREATE TABLE new_table AS SELECT DISTINCT * FROM original_table;
+DROP TABLE original_table;
+RENAME TABLE new_table TO original_table;
 
+'''
+    57. What are the default storage engines in MySQL?
+    Answer: The default storage engine was MyISAM up to MySQL 5.5, but InnoDB became the 
+    default from MySQL 5.5 onward. 
+'''
 
+'''
+    58. What is the purpose of the SET data type in MySQL?
+    Answer: The SET type is used to store a set of strings. You can store zero or more 
+    string values chosen from a list defined at table creation time.  
+'''
+CREATE TABLE t1 (colors SET('red', 'blue', 'green'));
+INSERT INTO t1 (colors) VALUES ('red,blue');
 
+'''
+    59. How do you implement pagination in MySQL?
+    Answer: Use LIMIT and OFFSET.
+'''
+SELECT * FROM table_name 
+LIMIT 10 OFFSET 20; -- skips first 20 records and fetches the next 10.
 
+'''
+    60. How can you fetch the month part from a DATE field in MySQL?
+    Answer: Use the MONTH() function.
+'''
+SELECT MONTH(date_column) FROM table_name;
 
+'''
+    61. How do you convert a DATETIME field into a UNIX timestamp?
+    Answer: Use UNIX_TIMESTAMP() function.
+'''
+SELECT UNIX_TIMESTAMP(datetime_column) FROM table_name;
 
+'''
+    62. How can you perform case sensitive search in a column?
+    Answer: Using the BINARY keyword.
+'''
+SELECT * FROM table_name WHERE BINARY column_name = "Value";
 
+'''
+    63. How can you transpose rows into columns, and viceversa, in query result?
+    Answer: This process is known as "Pivoting". To convert rows to columns, you use 
+    a combination of aggregate functions with CASE statements. For reverse, known as 
+    "Unpivoting", you can use UNION ALL.
+'''
+--Pivoting:
+SELECT
+    sum(CASE WHEN column = 'value1' THEN 1 ELSE 0 END) AS 'Value1',
+    SUM(CASE WHEN column = 'value2' THEN 1 ELSE 0 END) AS 'Value2'
+FROM table_name;
 
+-- Unpivoting:
+SELECT 'Value1' AS 'Column', Value1 AS 'Value' FROM table_name
+UNION ALL
+SELECT 'Value2' AS 'Column', Value2 AS 'Value' FROM table_name;
 
+'''
+    64. How can you get a list of all indexes in a database?
+    Answer: 
+'''
+SHOW INDEXES FROM table_name IN database_name;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+'''
+    65. How can you optimize a MySQL query?
+    Answer: Some methods include using EXPLAIN to analyze the query plan, indexing 
+    appropriate columns, avoiding the use of wildcard characters at the start of a LIKE 
+    query, and avoiding the use of SELECT *. 
+'''
